@@ -1,9 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 export const Navbar = () => {
-    const [nav, setNav] = useState(false);
+    const [nav, setNav] = React.useState(false);
 
     const links = [
         { id: 1, link: '/home', navName: "Home" },

@@ -1,13 +1,14 @@
 "use client"
+
+import React from 'react'
 import { Bagde } from '@/components/badge'
-import { SpinnerXl } from '@/components/spinner/xl'
-import { PostComments, Post } from '@/lib/definitions'
+import { Comment } from '@/components/post/comments/'
 import { PostStats } from '@/components/post/post-stats'
-import React, { useEffect, useState } from 'react'
+import { SpinnerXl } from '@/components/spinner/xl'
 import { PostContent } from '@/components/post/post-content'
+import { PostComments, Post } from '@/lib/definitions'
 import { commentsApi, singlePostApi } from '@/lib/getBlogPost'
 import { SkeletonComments } from './comments/skeletons/skeletons-comment'
-import { Comment } from '@/components/post/comments/'
 
 
 type Props = {
@@ -15,15 +16,15 @@ type Props = {
 }
 
 export const PostMain: React.FC<Props> = ({ postId }) => {
-    const [skip, setSkip] = useState<number>(0)
-    const [post, setPost] = useState<Post>()
-    const [isPending, setIsPending] = useState<boolean>(false)
-    const [errorPost, setErrorPost] = useState<string | unknown>(null)
-    const [comment, setComment] = useState<PostComments>()
-    const [isCommentPending, setIsCommentPending] = useState<boolean>(false)
+    const [skip, setSkip] = React.useState<number>(0)
+    const [post, setPost] = React.useState<Post>()
+    const [isPending, setIsPending] = React.useState<boolean>(false)
+    const [errorPost, setErrorPost] = React.useState<string | unknown>(null)
+    const [comment, setComment] = React.useState<PostComments>()
+    const [isCommentPending, setIsCommentPending] = React.useState<boolean>(false)
 
 
-    useEffect(() => {
+    React.useEffect(() => {
         async function getOnePost() {
             setIsPending(true)
             try {
@@ -38,7 +39,7 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
         getOnePost()
     }, [])
 
-    useEffect(() => {
+    React.useEffect(() => {
         async function getComments() {
             setIsCommentPending(true)
             try {

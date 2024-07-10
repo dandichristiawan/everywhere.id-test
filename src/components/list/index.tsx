@@ -1,20 +1,20 @@
 'use client';
 
-import { Post, PostResponse } from "@/lib/definitions"
+import React from 'react';
 import { Card } from '@/components/card/card';
-import { SpinnerXl } from '@/components/spinner/xl';
 import { allPostApi } from '@/lib/getBlogPost';
-import React, { useEffect, useState } from 'react';
-import { Pagination } from "../pagination";
+import { SpinnerXl } from '@/components/spinner/xl';
+import { Pagination } from "@/components/pagination";
+import { Post, PostResponse } from "@/lib/definitions"
 
 export const List = () => {
-    const [skip, setSkip] = useState<number>(0);
-    const [post, setPost] = useState<PostResponse>();
-    const [posts, setPosts] = useState<Post[]>([]);
-    const [error, setError] = useState<string | unknown>(null);
-    const [isPending, setIsPending] = useState<boolean>(false);
+    const [skip, setSkip] = React.useState<number>(0);
+    const [post, setPost] = React.useState<PostResponse>();
+    const [posts, setPosts] = React.useState<Post[]>([]);
+    const [error, setError] = React.useState<string | unknown>(null);
+    const [isPending, setIsPending] = React.useState<boolean>(false);
 
-    useEffect(() => {
+    React.useEffect(() => {
         async function getAllPost() {
             setIsPending(true);
             try {
