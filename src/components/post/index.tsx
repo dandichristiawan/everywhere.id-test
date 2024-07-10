@@ -1,6 +1,6 @@
 "use client"
 import { Bagde } from '@/components/badge'
-import { PostComments, SinglePost } from '@/lib/definitions'
+import { PostComments, Post } from '@/lib/definitions'
 import { Spinner } from '@/components/spinner'
 import { commentsApi, singlePostApi } from '@/lib/getBlogPost'
 import React, { useEffect, useState } from 'react'
@@ -16,7 +16,7 @@ type Props = {
 
 export const PostMain: React.FC<Props> = ({ postId }) => {
 
-    const [post, setPost] = useState<SinglePost>()
+    const [post, setPost] = useState<Post>()
     const [comment, setComment] = useState<PostComments>()
     const [errorPost, setErrorPost] = useState<string | unknown>(null)
     const [isPending, setIsPending] = useState<boolean>(false)
@@ -63,11 +63,13 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
             <>
                 <main className='min-h-screen max-w-4xl mx-auto items-center flex flex-col justify-center'>
                     <PostContent postBody={post.body} postTitle={post.title} position='start' />
-                    <PostStats position='end' views={post.views} reactions={post.reactions} />
-                    <Bagde position='start' tags={post.tags} />
+                    <div className="flex flex-row justify-between w-full">
+                        <PostStats position='start' views={post.views} reactions={post.reactions} widthProps="full" />
+                        <Bagde position='end' tags={post.tags} />
+                    </div>
                     {isCommentPending ? (
                         <>
-                            <SkeletonComments />
+                            <SkeletonComments countProps={comment} />
                         </>
                     ) : (
                         <>

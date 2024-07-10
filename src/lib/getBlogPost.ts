@@ -1,9 +1,9 @@
 "use server"
 
-import { SinglePost, PostComments, PostResponse } from "./definitions"
+import { Post, PostComments, PostResponse } from "./definitions"
 
 export async function allPostApi(): Promise<PostResponse> {
-    const res = await fetch('https://dummyjson.com/posts')
+    const res = await fetch('https://dummyjson.com/posts?limit=6&skip=6')
     if (!res.ok) {
         throw new Error('Something went wrong')
     }
@@ -19,7 +19,7 @@ export async function singlePostApi(postId: string) {
         throw new Error('Something went wrong')
     }
     const data = await res.json();
-    return data as SinglePost;
+    return data as Post;
 }
 
 export async function commentsApi(postId: string) {

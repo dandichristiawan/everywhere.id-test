@@ -34,11 +34,11 @@ export const List = () => {
     if (posts)
         return (
             <>
-                <main className="min-h-screen">
-
+                <main className="min-h-dvh max-w-9xl flex flex-col justify-center mx-auto">
                     {posts.map((p) => (
                         <Card key={p.id} post={p} />
                     ))}
+                    
                 </main>
             </>
         )

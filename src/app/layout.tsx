@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: "400",
+  subsets: ["latin"]
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={jakarta.className}>{children}</body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }
