@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Spinner = () => {
+export const SpinnerXl = () => {
     return (
         <>
             <div className="min-h-screen flex justify-center items-center text-center w-full">

@@ -7,8 +7,7 @@ export const Navbar = () => {
 
     const links = [
         { id: 1, link: '/home', navName: "Home" },
-        { id: 2, link: '/about', navName: "About" },
-        { id: 3, link: '/contact', navName: "Contact" },
+        { id: 2, link: '/contact', navName: "Contact" },
     ];
 
     return (

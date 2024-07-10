@@ -23,8 +23,7 @@ interface Users {
     username: string
     fullName: string
 }
-
-interface Comments {
+export interface Comments {
     id: number
     body: string
     postId: string

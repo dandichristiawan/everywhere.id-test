@@ -2,8 +2,8 @@
 
 import { Post, PostComments, PostResponse } from "./definitions"
 
-export async function allPostApi(): Promise<PostResponse> {
-    const res = await fetch('https://dummyjson.com/posts?limit=6&skip=6')
+export async function allPostApi(skip: number): Promise<PostResponse> {
+    const res = await fetch(`https://dummyjson.com/posts?limit=6&skip=${skip}`)
     if (!res.ok) {
         throw new Error('Something went wrong')
     }
@@ -12,7 +12,7 @@ export async function allPostApi(): Promise<PostResponse> {
 
 }
 
-export async function singlePostApi(postId: string) {
+export async function singlePostApi(postId: string): Promise<Post> {
     const res = await fetch(`https://dummyjson.com/posts/${postId}`)
 
     if (!res.ok) {
@@ -22,15 +22,14 @@ export async function singlePostApi(postId: string) {
     return data as Post;
 }
 
-export async function commentsApi(postId: string) {
-    const res = await fetch(`https://dummyjson.com/posts/${postId}/comments`)
+export async function commentsApi(skipComments: number): Promise<PostComments> {
+    const res = await fetch(`https://dummyjson.com/comments/?limit=3&skip=${skipComments}`)
 
     if (!res.ok) {
         throw new Error('Something went wrong')
     }
 
     const data = await res.json();
-    console.log(data)
     return data as PostComments;
 
 }

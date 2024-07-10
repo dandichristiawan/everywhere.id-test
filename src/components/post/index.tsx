@@ -1,13 +1,13 @@
 "use client"
 import { Bagde } from '@/components/badge'
+import { SpinnerXl } from '@/components/spinner/xl'
 import { PostComments, Post } from '@/lib/definitions'
-import { Spinner } from '@/components/spinner'
-import { commentsApi, singlePostApi } from '@/lib/getBlogPost'
-import React, { useEffect, useState } from 'react'
 import { PostStats } from '@/components/post/post-stats'
+import React, { useEffect, useState } from 'react'
 import { PostContent } from '@/components/post/post-content'
-import { Comments } from './comments'
+import { commentsApi, singlePostApi } from '@/lib/getBlogPost'
 import { SkeletonComments } from './comments/skeletons/skeletons-comment'
+import { Comment } from '@/components/post/comments/'
 
 
 type Props = {
@@ -15,11 +15,11 @@ type Props = {
 }
 
 export const PostMain: React.FC<Props> = ({ postId }) => {
-
+    const [skip, setSkip] = useState<number>(0)
     const [post, setPost] = useState<Post>()
-    const [comment, setComment] = useState<PostComments>()
-    const [errorPost, setErrorPost] = useState<string | unknown>(null)
     const [isPending, setIsPending] = useState<boolean>(false)
+    const [errorPost, setErrorPost] = useState<string | unknown>(null)
+    const [comment, setComment] = useState<PostComments>()
     const [isCommentPending, setIsCommentPending] = useState<boolean>(false)
 
 
@@ -27,8 +27,8 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
         async function getOnePost() {
             setIsPending(true)
             try {
-                const data = await singlePostApi(postId)
-                setPost(data)
+                const res = await singlePostApi(postId)
+                setPost(res)
             } catch (error) {
                 setErrorPost(error)
             } finally {
@@ -42,8 +42,13 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
         async function getComments() {
             setIsCommentPending(true)
             try {
-                const comment = await commentsApi(postId)
-                setComment(comment)
+                const res = await commentsApi(skip)
+                setComment((prevState) => ({
+                    comments: [...(prevState?.comments || []), ...res.comments],
+                    total: res.total,
+                    skip: res.skip,
+                    limit: res.limit
+                }))
             } catch (error) {
                 console.error(error)
             } finally {
@@ -51,12 +56,15 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
             }
         }
         getComments()
-    }, [])
+    }, [skip])
 
+    const onLoadMore = () => {
+        setSkip((prevSkip) => prevSkip + 3);
+    };
 
     if (errorPost) <div>"Error"</div>
 
-    if (isPending) return <Spinner />
+    if (isPending) return <SpinnerXl />
 
     if (post)
         return (
@@ -64,7 +72,7 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
                 <main className='min-h-screen max-w-4xl mx-auto items-center flex flex-col justify-center'>
                     <PostContent postBody={post.body} postTitle={post.title} position='start' />
                     <div className="flex flex-row justify-between w-full">
-                        <PostStats position='start' views={post.views} reactions={post.reactions} widthProps="full" />
+                        <PostStats views={post.views} reactions={post.reactions} widthProps="full" />
                         <Bagde position='end' tags={post.tags} />
                     </div>
                     {isCommentPending ? (
@@ -73,7 +81,9 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
                         </>
                     ) : (
                         <>
-                            <Comments commentProps={comment} />
+
+                            <Comment commentProps={comment} onLoad={onLoadMore} />
+
                         </>
                     )}
                 </main>
