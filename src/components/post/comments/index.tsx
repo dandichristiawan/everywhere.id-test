@@ -15,7 +15,7 @@ export const Comment: React.FC<Props> = ({ commentProps, onLoad }) => {
         <div className="flex flex-col justify-start w-full mt-7">
             <h1 className='text-xl font-semibold mb-2'>Comments</h1>
             <div className="flex flex-row gap-1 justify-end mb-2">
-                Showing <span className="font-semibold text-gray-900 dark:text-white">{start}</span> to <span className="font-semibold text-gray-900 dark:text-white">{end}</span> of <span className="font-semibold text-gray-900 dark:text-white">{commentProps?.total}</span> Comments
+                Showing <span className="font-semibold text-gray-900">{start}</span> to <span className="font-semibold text-gray-900">{end}</span> of <span className="font-semibold text-gray-900">{commentProps?.total}</span> Comments
             </div>
             {commentProps?.comments.length === 0 ?
                 <>

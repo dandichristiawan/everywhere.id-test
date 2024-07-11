@@ -16,7 +16,7 @@ export const SkeletonComments: React.FC<Props> = ({ countProps }) => {
             <div className='flex flex-col justify-start w-full mt-7 '>
                 <h1 className='text-xl font-semibold mb-2'>Comments</h1>
                 <div className="flex flex-row gap-1 justify-end mb-2">
-                    Showing <span className="font-semibold text-gray-900 dark:text-white">0</span> to <span className="font-semibold text-gray-900 dark:text-white">0</span> of <span className="font-semibold text-gray-900 dark:text-white">0</span> Comments
+                    Showing <span className="font-semibold text-gray-900">0</span> to <span className="font-semibold text-gray-900 ">0</span> of <span className="font-semibold text-gray-900 text-white">0</span> Comments
                 </div>
                 <div className="overflow-y-auto max-h-60 shadow-md">
                     {Array.from({ length: skeletonCount }).map((_, index) => (
