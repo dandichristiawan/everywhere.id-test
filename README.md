@@ -22,7 +22,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Folder Structure
 
-src/app/: Contains pages and routes for the application.__
-src/components/: Reusable UI components.__
-src/lib/: Utility functions, API interactions, data definitions, and validation.
+src/app/: Contains pages and routes for the application. <br/>
 
+src/components/: Reusable UI components. <br/>
+
+src/lib/: Utility functions, API interactions, data definitions, and validation.
