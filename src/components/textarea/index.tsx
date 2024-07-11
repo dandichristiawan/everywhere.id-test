@@ -37,10 +37,10 @@ export const TextArea: React.FC<Props> =
                     />
                     <div className="flex flex-row justify-between">
                         <div className="">
-                            {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+                            {error && <p className="text-red-500 text-xs md:text-sm mt-1">{error}</p>}
                         </div>
                         <div className="flex justify-end">
-                            <span className={`${valueProps.length === maxLengthProps ? "text-red-600" : ""}`}>{valueProps.length}/{maxLengthProps}</span>
+                            <span className={`text-sm ${valueProps.length === maxLengthProps ? "text-red-600" : ""}`}>{valueProps.length}/{maxLengthProps}</span>
                         </div>
                     </div>
                 </div >

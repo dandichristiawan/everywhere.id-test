@@ -71,10 +71,9 @@ export const PostMain: React.FC<Props> = ({ postId }) => {
         return (
             <>
                 <main className='min-h-screen max-w-4xl mx-auto items-center flex flex-col justify-center'>
-                    <PostContent postBody={post.body} postTitle={post.title} position='start' />
-                    <div className="flex flex-row justify-between w-full">
+                    <PostContent postBody={post.body} postTitle={post.title} postTag={post.tags} position='start' />
+                    <div className="flex flex-col px-4 md:p-0 md:flex-row justify-center w-full">
                         <PostStats views={post.views} reactions={post.reactions} widthProps="full" />
-                        <Bagde position='end' tags={post.tags} />
                     </div>
                     {isCommentPending ? (
                         <>

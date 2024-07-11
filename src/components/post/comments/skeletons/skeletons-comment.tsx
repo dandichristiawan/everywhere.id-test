@@ -13,11 +13,8 @@ export const SkeletonComments: React.FC<Props> = ({ countProps }) => {
 
     return (
         <>
-            <div className='flex flex-col justify-start w-full mt-7 '>
-                <h1 className='text-xl font-semibold mb-2'>Comments</h1>
-                <div className="flex flex-row gap-1 justify-end mb-2">
-                    Showing <span className="font-semibold text-gray-900">0</span> to <span className="font-semibold text-gray-900 ">0</span> of <span className="font-semibold text-gray-900 text-white">0</span> Comments
-                </div>
+            <div className='flex flex-col justify-start w-full mt-7 px-4 md:p-0 '>
+                <h1 className='text-center md:text-left text-xl font-semibold mb-2'>Comments</h1>
                 <div className="overflow-y-auto max-h-60 shadow-md">
                     {Array.from({ length: skeletonCount }).map((_, index) => (
                         <div key={index} className='m-4 bg-gray-200 p-2 flex flex-row justify-between rounded-md animate-pulse'>
@@ -32,8 +29,11 @@ export const SkeletonComments: React.FC<Props> = ({ countProps }) => {
                         </div>
                     ))}
                 </div>
+                <div className="flex flex-row gap-1 justify-center mt-2">
+                    Showing <span className="font-semibold text-gray-900">0</span> to <span className="font-semibold text-gray-900 ">0</span> of <span className="font-semibold text-gray-900">0</span> Comments
+                </div>
                 <div className="flex justify-center">
-                    <button disabled className='p-2 mt-4 border border-gray-400 rounded-full w-1/4 items-center shadow-md'>
+                    <button disabled className='p-2 mt-4 border border-gray-400 rounded-full w-1/3 md:w-1/4 items-center shadow-md'>
                         <SpinnerMd />
                     </button>
                 </div>
