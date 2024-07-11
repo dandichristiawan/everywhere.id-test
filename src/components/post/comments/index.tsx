@@ -1,5 +1,5 @@
 import React from 'react'
-import { PostComments } from '@/lib/api'
+import { PostComments } from '@/lib/definitions'
 
 type Props = {
     onLoad: () => void
