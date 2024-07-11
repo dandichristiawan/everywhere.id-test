@@ -7,7 +7,7 @@ import { PostStats } from '@/components/post/post-stats'
 import { SpinnerXl } from '@/components/spinner/xl'
 import { PostContent } from '@/components/post/post-content'
 import { PostComments, Post } from '@/lib/definitions'
-import { commentsApi, singlePostApi } from '@/lib/getBlogPost'
+import { commentsApi, singlePostApi } from '@/lib/api'
 import { SkeletonComments } from './comments/skeletons/skeletons-comment'
 
 

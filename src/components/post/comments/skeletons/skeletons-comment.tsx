@@ -1,5 +1,5 @@
 import React from 'react'
-import { PostComments } from '@/lib/definitions'
+import { PostComments } from '@/lib/api'
 import { SpinnerMd } from '@/components/spinner/md'
 
 

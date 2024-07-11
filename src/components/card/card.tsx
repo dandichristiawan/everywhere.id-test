@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Post } from '@/lib/definitions'
 import { PostStats } from '../post/post-stats'
+import { Bagde } from '../badge'
 
 
 
@@ -10,17 +11,15 @@ type Props = {
 }
 export const Card: React.FC<Props> = ({ post }) => {
     return (
-        <div className='p-4 border border-gray-300 border-l-0 border-r-0 justify-center'>
-            <h2 className='text-2xl mb-2'>{post.title}</h2>
-            <p className='text-md mb-2'>{post.body.length > 100 ? `${post.body.substring(0, 100)}...` : post.body}</p>
+        <div className='p-7 border border-gray-300 border-l-0 border-r-0 border-t-0 justify-center'>
+            <Link href={`/post/${post.id}`} className='text-blue-600'>
+                <h2 className='text-2xl mb-2'>{post.title}</h2>
+            </Link>
+            <p className='text-md mb-4'>{post.body.length > 160 ? `${post.body.substring(0, 160)}...` : post.body}</p>
             <div className="flex flex-row justify-between">
                 <PostStats views={post.views} reactions={post.reactions} />
-                <div className="flex">
-                    <Link href={`/post/${post.id}`} className='text-blue-600'>
-                        Read more...
-                    </Link>
-                </div>
+                <Bagde tags={post.tags} position='end' />
             </div>
-        </div>
+        </div >
     )
 }

@@ -28,8 +28,10 @@ export const Input: React.FC<Props> =
         return (
             <>
                 <div className="mb-2">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labelProps}</label>
+                    <label htmlFor={labelProps} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{labelProps}</label>
                     <input
+                        name={labelProps}
+                        aria-labelledby={labelProps}
                         type={typeProps}
                         value={valueProps}
                         maxLength={maxLengthProps}

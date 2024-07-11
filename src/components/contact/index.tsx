@@ -54,50 +54,52 @@ export const ContactForm = () => {
 
     return (
         <>
-            <main className="min-h-screen max-w-3xl justify-center flex flex-col mx-auto" >
-                <h1 className="text-center text-3xl font-semibold">Contact Me</h1>
-                <Input
-                    typeProps='text'
-                    minLengthProps={3}
-                    maxLengthProps={32}
-                    valueProps={fullName}
-                    labelProps='Full Name'
-                    placeholderProps='John Doe'
-                    onChangeProps={setFullName}
-                    error={errors.fullName}
-                />
-                <Input
-                    typeProps='email'
-                    minLengthProps={3}
-                    maxLengthProps={32}
-                    valueProps={email}
-                    labelProps='E-Mail'
-                    placeholderProps='john.doe@domain.com'
-                    onChangeProps={setEmail}
-                    error={errors.email}
-                />
-                <TextArea
-                    labelProps='Message'
-                    minLengthProps={3}
-                    maxLengthProps={80}
-                    valueProps={message}
-                    placeholderProps='Write your message here....'
-                    onChangeProps={setMessage}
-                    error={errors.message}
-                />
-                <div className="flex justify-center">
-                    <button className='bg-blue-600 p-2 rounded-full mt-2 w-1/4 text-white' onClick={onSubmit}>
-                        {isPending ? (
-                            <>
-                                <div className="flex flex-row justify-center">
-                                    <div className="flex justify-center items-center w-2/3">
-                                        <p>Submitting</p>
+            <main className="min-h-screen max-w-3xl justify-center flex flex-col mx-auto">
+                <div className='p-5 rounded-2xl shadow-xl' >
+                    <h1 className="text-center text-3xl font-semibold">Contact Me</h1>
+                    <Input
+                        typeProps='text'
+                        minLengthProps={3}
+                        maxLengthProps={32}
+                        valueProps={fullName}
+                        labelProps='Full Name'
+                        placeholderProps='John Doe'
+                        onChangeProps={setFullName}
+                        error={errors.fullName}
+                    />
+                    <Input
+                        typeProps='email'
+                        minLengthProps={3}
+                        maxLengthProps={32}
+                        valueProps={email}
+                        labelProps='E-Mail'
+                        placeholderProps='john.doe@domain.com'
+                        onChangeProps={setEmail}
+                        error={errors.email}
+                    />
+                    <TextArea
+                        labelProps='Message'
+                        minLengthProps={3}
+                        maxLengthProps={80}
+                        valueProps={message}
+                        placeholderProps='Write your message here....'
+                        onChangeProps={setMessage}
+                        error={errors.message}
+                    />
+                    <div className="flex justify-center">
+                        <button className='bg-blue-600 p-2 rounded-full mt-2 w-1/4 text-white' onClick={onSubmit}>
+                            {isPending ? (
+                                <>
+                                    <div className="flex flex-row justify-center">
+                                        <div className="flex justify-center items-center w-2/3">
+                                            <p>Submitting</p>
+                                        </div>
+                                        <SpinnerMd />
                                     </div>
-                                    <SpinnerMd />
-                                </div>
-                            </>
-                        ) : 'Submit'}
-                    </button>
+                                </>
+                            ) : 'Submit'}
+                        </button>
+                    </div>
                 </div>
             </main>
             <Modal
