@@ -15,7 +15,7 @@ export const SkeletonComments: React.FC<Props> = ({ countProps }) => {
         <>
             <div className='flex flex-col justify-start w-full mt-7 px-4 md:p-0 '>
                 <h1 className='text-center md:text-left text-xl font-semibold mb-2'>Comments</h1>
-                <div className="overflow-y-auto max-h-60 shadow-md">
+                <div className="overflow-y-auto max-h-72 shadow-md">
                     {Array.from({ length: skeletonCount }).map((_, index) => (
                         <div key={index} className='m-4 bg-gray-200 p-2 flex flex-row justify-between rounded-md animate-pulse'>
                             <div className="flex flex-col">

@@ -19,7 +19,7 @@ export const Comment: React.FC<Props> = ({ commentProps, onLoad }) => {
                     <p className='text-gray-500 text-center p-20'>No comments yet</p>
                 </> :
                 <>
-                    <div className="overflow-y-auto max-h-60 shadow-md">
+                    <div className="overflow-y-auto max-h-72 shadow-md">
                         {commentProps?.comments.map((c, index) => (
                             <div key={index} className='m-4 bg-gray-200 p-2  flex flex-row justify justify-between rounded-md '>
                                 <div className="flex flex-col">
