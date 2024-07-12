@@ -12,7 +12,7 @@ export const PostContent: React.FC<Props> = ({ postTitle, postBody, postTag, pos
   return (
     <>
       <div className={`flex justify-${position} w-full mb-2`}>
-        <h1 className="font-bold text-4xl px-4 md:px-0 pt-2">{postTitle}</h1>
+        <h1 className="font-bold text-xl md:text-3xl text-balance px-4 md:px-0 pt-4 md:pt-2">{postTitle}</h1>
       </div>
       <div className="my-2">
         <p className='text-justify text-lg px-4 md:px-0'>{postBody}</p>
